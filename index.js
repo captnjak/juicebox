@@ -1,13 +1,12 @@
 const PORT = 3000;
+
+
+/** Require Statements **/
 const express = require('express');
 const server = express();
 
 const { client } = require('./db');
 client.connect();
-
-server.listen(PORT, () => {
-	console.log('The server is up on port', PORT);
-});
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
@@ -18,6 +17,13 @@ server.use(morgan('dev'));
 const apiRouter = require('./api');
 server.use('/api', apiRouter);
 
+
+/** Start Server **/
+server.listen(PORT, () => {
+	console.log('The server is up on port', PORT);
+});
+
+/** Body Loggers **/
 server.use((req, res, next) => {
 	console.log('<____Body Logger START____>');
 	console.log(req.body);
