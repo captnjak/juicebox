@@ -2,6 +2,8 @@ const PORT = 3000;
 
 
 /** Require Statements **/
+require('dotenv').config();
+
 const express = require('express');
 const server = express();
 
