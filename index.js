@@ -1,6 +1,5 @@
 const PORT = 3000;
 
-
 /** Require Statements **/
 require('dotenv').config();
 
@@ -20,11 +19,6 @@ const apiRouter = require('./api');
 server.use('/api', apiRouter);
 
 
-/** Start Server **/
-server.listen(PORT, () => {
-	console.log('The server is up on port', PORT);
-});
-
 /** Body Loggers **/
 server.use((req, res, next) => {
 	console.log('<____Body Logger START____>');
@@ -32,4 +26,9 @@ server.use((req, res, next) => {
 	console.log('<_____Body Logger END_____>');
 
 	next();
+});
+
+/** Start Server **/
+server.listen(PORT, () => {
+	console.log('The server is up on port', PORT);
 });
